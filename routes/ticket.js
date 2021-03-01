@@ -76,7 +76,6 @@ router.get('/cancel/:ticketId', verify, async (req, res) => {
     const result = await Ticket.updateOne({_id: req.params.ticketId}, { canceled: true });
     res.status(200).send('Ticket is canceled');
   } catch (err){
-    console.log(err);
     res.json({ message: err });
   }
 });

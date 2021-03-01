@@ -25,7 +25,7 @@ router.post('/', verify, async (req, res) => {
   //CHECK IF RIDE ALREADY EXISTS
   try {
     const ride = await Ride.find({ departure: req.body.departure, title: req.body.title });
-    if(ride) return res.status(403).send('Ride already exists');
+    if(ride[0]) return res.status(403).send('Ride already exists');
   } catch (error) {
     res.json({ message: err });
   }
